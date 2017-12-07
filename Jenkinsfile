@@ -3,7 +3,10 @@ properties([
     [$class: 'GithubProjectProperty',
     displayName: '',
     projectUrlStr: 'https://github.com/Galaxy-Ravi/Repository-1'],
-    pipelineTriggers([githubPush()])])
+    pipelineTriggers([upstream(
+      threshold: 'SUCCESS',
+      upstreamProjects: 'https://github.com/Galaxy-Ravi/Repository-2'
+    )])])
 
 pipeline {
     agent any 
